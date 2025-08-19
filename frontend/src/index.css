@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: "Roboto", sans-serif;
+  }
+}
+
+/* keyframes + utilities */
+@keyframes scroll-x {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  } /* track berisi 2 copy identik */
+}
+
+@layer utilities {
+  .animate-scroll {
+    animation: scroll-x 25s linear infinite;
+  }
+  .animate-paused {
+    animation-play-state: paused;
+  }
+
+  /* tambah opsi lebih cepat */
+  .animate-scroll-fast {
+    animation: scroll-x 12s linear infinite;
+  }
+  .animate-scroll-faster {
+    animation: scroll-x 8s linear infinite;
+  }
+
+  /* Nice edge fade (optional) */
+  .edge-fade {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll {
+    animation: none;
+  }
+}
