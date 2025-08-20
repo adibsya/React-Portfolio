@@ -42,9 +42,9 @@ const Contact = ({ action }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Left: copy */}
           <div>
-            <p className="text-sm font-medium text-white/70">Let’s talk</p>
+            <p className="text-sm font-medium text-white/70">Let’s Discuss</p>
             <h2 className="mt-2 text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-300 via-violet-300 to-cyan-200">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-300 to-pink-400">
                 Contact
               </span>
             </h2>
@@ -52,7 +52,7 @@ const Contact = ({ action }) => {
               Have a question or a project in mind? Feel free to reach out.
             </p>
             <p className="mt-3 text-white/60">
-              Location: <span className="text-white">Indonesia, East Java</span>
+              Location: <span className="text-white">Surabaya, Indonesia</span>
             </p>
           </div>
 

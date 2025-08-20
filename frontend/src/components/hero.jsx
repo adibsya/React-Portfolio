@@ -25,13 +25,13 @@ const Hero = () => {
       className="relative overflow-hidden scroll-mt-24 pt-28 md:pt-36 pb-20 md:pb-28 px-15"
     >
       {/* smooth full-height gradient */}
-      {/* <div
+      <div
         className="pointer-events-none absolute inset-0 -z-10
                       bg-gradient-to-b
                       from-zinc-950 from-0%
                       via-[#27005D]/80 via-[45%]
                       to-zinc-950 to-100%"
-      /> */}
+      />
 
       {/* subtle noise to reduce banding */}
       <div
@@ -40,7 +40,7 @@ const Hero = () => {
                       [background-size:3px_3px]"
       />
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+      <div className="max-w-7xl mx-auto px-1 sm:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-8 items-center">
           {/* Left: title + actions */}
           <div>
@@ -118,168 +118,56 @@ const Hero = () => {
                        gap-0 transform-gpu [will-change:transform]"
           >
             {/* 1st copy */}
-            <ul className="shrink-0 flex items-center gap-12 md:gap-20 pr-12 md:pr-20">
-              <li className="group flex items-center gap-3 text-white/80 rounded-xl px-3 py-2 transition-colors hover:text-white hover:bg-white/5">
-                <img
-                  alt="React"
-                  className="h-7 w-7 object-contain transition-transform duration-300 ease-out opacity-60 group-hover:opacity-100 group-hover:scale-110"
-                  src="https://cdn.simpleicons.org/react/61DAFB"
-                />
-                <span className="hidden sm:inline transition-colors">
-                  React
-                </span>
-              </li>
-
-              <li className="group flex items-center gap-3 text-white/80 rounded-xl px-3 py-2 transition-colors hover:text-white hover:bg-white/5">
-                <img
-                  alt="Tailwind CSS"
-                  className="h-7 w-7 object-contain transition-transform duration-300 ease-out opacity-60 group-hover:opacity-100 group-hover:scale-110"
-                  src="https://cdn.simpleicons.org/tailwindcss/38BDF8"
-                />
-                <span className="hidden sm:inline transition-colors">
-                  Tailwindcss
-                </span>
-              </li>
-
-              <li className="group flex items-center gap-3 text-white/80 rounded-xl px-3 py-2 transition-colors hover:text-white hover:bg-white/5">
-                <img
-                  alt="Express"
-                  className="h-7 w-7 object-contain transition-transform duration-300 ease-out opacity-60 group-hover:opacity-100 group-hover:scale-110"
-                  src="https://cdn.simpleicons.org/express/000000"
-                />
-                <span className="hidden sm:inline transition-colors">
-                  Express
-                </span>
-              </li>
-
-              <li className="group flex items-center gap-3 text-white/80 rounded-xl px-3 py-2 transition-colors hover:text-white hover:bg-white/5">
-                <img
-                  alt="Node.js"
-                  className="h-7 w-7 object-contain transition-transform duration-300 ease-out opacity-60 group-hover:opacity-100 group-hover:scale-110"
-                  src="https://cdn.simpleicons.org/nodedotjs/5FA04E"
-                />
-                <span className="hidden sm:inline transition-colors">
-                  Nodejs
-                </span>
-              </li>
-
-              <li className="group flex items-center gap-3 text-white/80 rounded-xl px-3 py-2 transition-colors hover:text-white hover:bg-white/5">
-                <img
-                  alt="Javascript"
-                  className="h-7 w-7 object-contain transition-transform duration-300 ease-out opacity-60 group-hover:opacity-100 group-hover:scale-110"
-                  src="https://cdn.simpleicons.org/javascript/F7DF1E"
-                />
-                <span className="hidden sm:inline transition-colors">
-                  Javascript
-                </span>
-              </li>
-
-              <li className="group flex items-center gap-3 text-white/80 rounded-xl px-3 py-2 transition-colors hover:text-white hover:bg-white/5">
-                <img
-                  alt="MongoDB"
-                  className="h-7 w-7 object-contain transition-transform duration-300 ease-out opacity-60 group-hover:opacity-100 group-hover:scale-110"
-                  src="https://cdn.simpleicons.org/mongodb/47A248"
-                />
-                <span className="hidden sm:inline transition-colors">
-                  MongoDB
-                </span>
-              </li>
-              <li className="group flex items-center gap-3 text-white/80 rounded-xl px-3 py-2 transition-colors hover:text-white hover:bg-white/5">
-                <img
-                  alt="HTML5"
-                  className="h-7 w-7 object-contain transition-transform duration-300 ease-out opacity-60 group-hover:opacity-100 group-hover:scale-110"
-                  src="https://cdn.simpleicons.org/html5/DF4C25"
-                />
-                <span className="hidden sm:inline transition-colors">
-                  HTML5
-                </span>
-              </li>
-              <li className="group flex items-center gap-3 text-white/80 rounded-xl px-3 py-2 transition-colors hover:text-white hover:bg-white/5">
-                <img
-                  alt="CSS3"
-                  className="h-7 w-7 object-contain transition-transform duration-300 ease-out opacity-60 group-hover:opacity-100 group-hover:scale-110"
-                  src="https://cdn.simpleicons.org/css/1572B6"
-                />
-                <span className="hidden sm:inline transition-colors">CSS3</span>
-              </li>
-            </ul>
+            <TechList ariaHidden={false} />
 
             {/* 2nd copy for seamless loop (IDENTIK) */}
-            <ul
-              aria-hidden="true"
-              className="shrink-0 flex items-center gap-12 md:gap-20 pr-12 md:pr-20"
-            >
-              <li className="group flex items-center gap-3 text-white/80 rounded-xl px-3 py-2 transition-colors hover:text-white hover:bg-white/5">
-                <img
-                  alt="React"
-                  className="h-7 w-7 object-contain transition-transform duration-300 ease-out opacity-60 group-hover:opacity-100 group-hover:scale-110"
-                  src="https://cdn.simpleicons.org/react/61DAFB"
-                />
-                <span className="hidden sm:inline transition-colors">
-                  React
-                </span>
-              </li>
-
-              <li className="group flex items-center gap-3 text-white/80 rounded-xl px-3 py-2 transition-colors hover:text-white hover:bg-white/5">
-                <img
-                  alt="Tailwind CSS"
-                  className="h-7 w-7 object-contain transition-transform duration-300 ease-out opacity-60 group-hover:opacity-100 group-hover:scale-110"
-                  src="https://cdn.simpleicons.org/tailwindcss/38BDF8"
-                />
-                <span className="hidden sm:inline transition-colors">
-                  Tailwindcss
-                </span>
-              </li>
-
-              <li className="group flex items-center gap-3 text-white/80 rounded-xl px-3 py-2 transition-colors hover:text-white hover:bg-white/5">
-                <img
-                  alt="Express"
-                  className="h-7 w-7 object-contain transition-transform duration-300 ease-out opacity-60 group-hover:opacity-100 group-hover:scale-110"
-                  src="https://cdn.simpleicons.org/express/000000"
-                />
-                <span className="hidden sm:inline transition-colors">
-                  Express
-                </span>
-              </li>
-
-              <li className="group flex items-center gap-3 text-white/80 rounded-xl px-3 py-2 transition-colors hover:text-white hover:bg-white/5">
-                <img
-                  alt="Node.js"
-                  className="h-7 w-7 object-contain transition-transform duration-300 ease-out opacity-60 group-hover:opacity-100 group-hover:scale-110"
-                  src="https://cdn.simpleicons.org/nodedotjs/5FA04E"
-                />
-                <span className="hidden sm:inline transition-colors">
-                  Nodejs
-                </span>
-              </li>
-
-              <li className="group flex items-center gap-3 text-white/80 rounded-xl px-3 py-2 transition-colors hover:text-white hover:bg-white/5">
-                <img
-                  alt="Javascript"
-                  className="h-7 w-7 object-contain transition-transform duration-300 ease-out opacity-60 group-hover:opacity-100 group-hover:scale-110"
-                  src="https://cdn.simpleicons.org/javascript/F7DF1E"
-                />
-                <span className="hidden sm:inline transition-colors">
-                  Javascript
-                </span>
-              </li>
-
-              <li className="group flex items-center gap-3 text-white/80 rounded-xl px-3 py-2 transition-colors hover:text-white hover:bg-white/5">
-                <img
-                  alt="MongoDB"
-                  className="h-7 w-7 object-contain transition-transform duration-300 ease-out opacity-60 group-hover:opacity-100 group-hover:scale-110"
-                  src="https://cdn.simpleicons.org/mongodb/47A248"
-                />
-                <span className="hidden sm:inline transition-colors">
-                  MongoDB
-                </span>
-              </li>
-            </ul>
+            <TechList ariaHidden={true} />
           </div>
         </div>
       </div>
     </section>
   );
 };
+
+// Single source of truth for items
+const tech = [
+  { name: "React", src: "https://cdn.simpleicons.org/react/61DAFB" },
+  {
+    name: "Tailwindcss",
+    src: "https://cdn.simpleicons.org/tailwindcss/38BDF8",
+  },
+  { name: "Express", src: "https://cdn.simpleicons.org/express/FFFFFF" },
+  { name: "Nodejs", src: "https://cdn.simpleicons.org/nodedotjs/5FA04E" },
+  { name: "Javascript", src: "https://cdn.simpleicons.org/javascript/F7DF1E" },
+  { name: "MongoDB", src: "https://cdn.simpleicons.org/mongodb/47A248" },
+  { name: "HTML5", src: "https://cdn.simpleicons.org/html5/DF4C25" },
+  { name: "CSS3", src: "https://cdn.simpleicons.org/css/1572B6" },
+];
+
+const TechList = ({ ariaHidden }) => (
+  <ul
+    aria-hidden={ariaHidden}
+    className="shrink-0 flex items-center gap-12 md:gap-20 pr-12 md:pr-20"
+  >
+    {tech.map((t) => (
+      <li
+        key={t.name}
+        className="group flex items-center gap-3 text-white/80 rounded-xl px-3 py-2 transition-colors hover:text-white hover:bg-white/5"
+      >
+        <img
+          alt={t.name}
+          src={t.src}
+          width={28}
+          height={28}
+          loading="eager"
+          decoding="async"
+          draggable="false"
+          className="h-7 w-7 object-contain transition-transform duration-300 ease-out opacity-60 group-hover:opacity-100 group-hover:scale-110"
+        />
+        <span className="hidden sm:inline transition-colors">{t.name}</span>
+      </li>
+    ))}
+  </ul>
+);
 
 export default Hero;

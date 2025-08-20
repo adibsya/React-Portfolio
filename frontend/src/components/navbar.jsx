@@ -124,7 +124,7 @@ const Navbar = ({ active: activeProp = "home" }) => {
     >
       {/* underline bergerak — hanya tampil di desktop */}
       <span
-        className={`pointer-events-none absolute bottom-1 h-1 bg-pink-400 rounded-full hidden md:block
+        className={`pointer-events-none absolute bottom-1 h-1 bg-pink-500 rounded-full hidden md:block
                     transition-all duration-350 ease-out ${
                       indicator.ready ? "opacity-100" : "opacity-0"
                     }`}
