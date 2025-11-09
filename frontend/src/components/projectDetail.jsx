@@ -71,7 +71,9 @@ const ProjectDetail = ({ projectId, onClose }) => {
           <h2 className="text-2xl font-bold">Project Not Found</h2>
           <button
             onClick={onClose}
-            className="mt-4 px-6 py-2 rounded-xl bg-pink-500 hover:bg-pink-600 transition"
+            className="mt-4 px-6 py-3 rounded-xl bg-pink-500 hover:bg-pink-600 
+                       text-white font-medium hover:scale-105 transition-all duration-300
+                       shadow-lg shadow-pink-500/25"
           >
             Back to Projects
           </button>
@@ -85,9 +87,11 @@ const ProjectDetail = ({ projectId, onClose }) => {
       {/* Close button */}
       <button
         onClick={onClose}
-        className="fixed top-6 right-6 z-10 w-12 h-12 rounded-xl bg-white/5 border border-white/10 
-                   text-white hover:bg-white/10 hover:border-pink-500/30 transition-all duration-300
-                   flex items-center justify-center group"
+        className="fixed top-6 right-6 z-10 w-12 h-12 rounded-xl 
+                   bg-pink-500/10 border border-pink-500/30 
+                   text-pink-300 hover:bg-pink-500/20 hover:border-pink-500/50
+                   hover:text-pink-200 hover:scale-110 transition-all duration-300
+                   flex items-center justify-center group shadow-lg shadow-pink-500/10"
         aria-label="Close"
       >
         <svg
@@ -366,10 +370,25 @@ const ProjectDetail = ({ projectId, onClose }) => {
           <button
             onClick={onClose}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl 
-                       bg-white/5 border border-white/10 text-white font-medium
-                       hover:bg-white/10 transition-all duration-300"
+                       bg-pink-500/10 border border-pink-500/30 text-pink-300 font-medium
+                       hover:bg-pink-500/20 hover:border-pink-500/50 hover:text-pink-200
+                       hover:scale-105 transition-all duration-300 
+                       shadow-lg shadow-pink-500/10 hover:shadow-pink-500/20"
           >
-            ← Back to Projects
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
+            Back to Projects
           </button>
         </div>
       </div>

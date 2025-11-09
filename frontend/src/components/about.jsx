@@ -21,11 +21,11 @@ const About = () => {
 
               <h2 className="mt-5 text-3xl sm:text-4xl font-bold leading-tight text-white">
                 <span className="italic text-white/90">"Sometimes you</span>{" "}
-                <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-fuchsia-400">
-                  win
-                </span>
-                <span className="italic text-white/90">, sometimes you</span>{" "}
-                <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-fuchsia-400">
+                <span className="italic bg-clip-text  text-pink-400">win</span>
+                <span className="italic text-white/90">
+                  , sometimes you
+                </span>{" "}
+                <span className="italic bg-clip-text  text-pink-400">
                   learn
                 </span>
                 <span className="italic text-white/90">."</span>

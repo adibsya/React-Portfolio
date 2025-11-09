@@ -49,10 +49,7 @@ const Hero = () => {
             </p>
 
             <h1 className="mt-4 text-5xl sm:text-6xl md:text-7xl leading-tight font-extrabold tracking-tight text-white">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-fuchsia-400">
-                Fullstack
-              </span>{" "}
-              Web Developer
+              <span className="text-pink-400">Fullstack</span> Web Developer
             </h1>
 
             <div className="mt-10 flex items-center gap-4">
@@ -62,7 +59,7 @@ const Hero = () => {
                 rel="noreferrer"
                 aria-label="GitHub"
                 className="w-12 h-12 grid place-items-center rounded-xl bg-white/5 border border-white/10 
-                           text-white/80 hover:text-white hover:bg-white/10 hover:border-pink-500/30 
+                           text-white/80 hover:text-white hover:bg-white/10 hover:border-pink-400/30 
                            hover:scale-110 transition-all duration-300"
               >
                 <Icon.github className="w-6 h-6" />
@@ -71,7 +68,7 @@ const Hero = () => {
                 href="mailto:ahmadadibsyaifulloh@gmail.com"
                 aria-label="Email"
                 className="w-12 h-12 grid place-items-center rounded-xl bg-white/5 border border-white/10 
-                           text-white/80 hover:text-white hover:bg-white/10 hover:border-pink-500/30 
+                           text-white/80 hover:text-white hover:bg-white/10 hover:border-pink-400/30 
                            hover:scale-110 transition-all duration-300"
               >
                 <Icon.mail className="w-6 h-6" />
@@ -82,7 +79,7 @@ const Hero = () => {
                 rel="noreferrer"
                 aria-label="LinkedIn"
                 className="w-12 h-12 grid place-items-center rounded-xl bg-white/5 border border-white/10 
-                           text-white/80 hover:text-white hover:bg-white/10 hover:border-pink-500/30 
+                           text-white/80 hover:text-white hover:bg-white/10 hover:border-pink-400/30 
                            hover:scale-110 transition-all duration-300"
               >
                 <Icon.linkedin className="w-6 h-6" />

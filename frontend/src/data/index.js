@@ -1,12 +1,12 @@
 import cookingAppData from "./cookingApp";
 import justibotAiData from "./justibotAi";
-import mobileAppData from "./mobileApp";
+import ngarumiData from "./ngarumi";
 
 // Central project data registry
 const projectsData = {
   "cooking-app": cookingAppData,
   "justibot-ai": justibotAiData,
-  "mobile-app": mobileAppData,
+  "ngarumi-website": ngarumiData,
 };
 
 // Helper function to get project by slug

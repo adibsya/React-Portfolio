@@ -1,7 +1,12 @@
-const websiteServiceData = {
+import ngarumi1 from "../assets/ngarumi (1).png";
+import ngarumi2 from "../assets/ngarumi (2).png";
+import ngarumi3 from "../assets/ngarumi (3).png";
+import ngarumi4 from "../assets/ngarumi (4).png";
+
+const ngarumiData = {
   id: 3,
-  slug: "website-service",
-  title: "Jasa Pembuatan Website Profesional",
+  slug: "ngarumi-website",
+  title: "NgarumiSoft - Jasa Pembuatan Website",
   description:
     "Solusi lengkap pembuatan website bisnis modern dengan paket terjangkau. Dari landing page hingga sistem e-commerce dan company profile yang responsif dan SEO-friendly.",
   fullDescription: `Layanan pembuatan website profesional yang dirancang khusus untuk kebutuhan bisnis modern. Kami menyediakan solusi lengkap mulai dari konsultasi gratis, desain custom, hingga maintenance website yang berkelanjutan.
@@ -9,9 +14,8 @@ const websiteServiceData = {
 Dengan pengalaman dalam membangun berbagai jenis website - mulai dari company profile, e-commerce, hingga website institusi pendidikan - kami siap mewujudkan visi digital bisnis Anda. 
 
 Setiap website yang kami buat dilengkapi dengan teknologi terdepan, desain responsif, optimasi SEO, dan performa yang cepat untuk memastikan pengalaman pengguna yang optimal dan konversi bisnis yang maksimal.`,
-  image:
-    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-  images: [],
+  image: ngarumi1,
+  images: [ngarumi1, ngarumi2, ngarumi3, ngarumi4],
   date: "November 8, 2024",
   tags: ["Website Development", "Business", "SEO"],
   technologies: [
@@ -23,7 +27,7 @@ Setiap website yang kami buat dilengkapi dengan teknologi terdepan, desain respo
     "Vercel",
   ],
   demoLink: "https://ngarumisoft-demo.vercel.app",
-  githubLink: "https://github.com/adibsya/website-service-portfolio",
+  githubLink: "https://github.com/adibsya/ngarumisoft-website",
   features: [
     "Paket harga fleksibel mulai dari Rp 1.499K",
     "Desain responsif untuk semua perangkat",
@@ -38,4 +42,4 @@ Setiap website yang kami buat dilengkapi dengan teknologi terdepan, desain respo
   ],
 };
 
-export default websiteServiceData;
+export default ngarumiData;

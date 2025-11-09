@@ -28,9 +28,7 @@ const ProjectExample = () => {
           </p>
           <h2 className="mt-3 text-4xl md:text-5xl font-extrabold tracking-tight text-white">
             Featured{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-300 to-pink-400">
-              Projects
-            </span>
+            <span className="bg-clip-text text-pink-400">Projects</span>
           </h2>
         </div>
 
