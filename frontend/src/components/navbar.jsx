@@ -104,10 +104,14 @@ const Navbar = ({ active: activeProp = "home" }) => {
   const handleClick = (e, l) => {
     e.preventDefault();
     setActive(l.id);
+
     document
       .querySelector(l.href)
       ?.scrollIntoView({ behavior: "smooth", block: "start" });
-    history.replaceState(null, "", l.href);
+
+    // hapus hash dari URL, tetap di path sekarang (/home)
+    const base = window.location.pathname + window.location.search;
+    history.replaceState(null, "", base);
   };
 
   return (

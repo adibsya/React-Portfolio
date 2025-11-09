@@ -45,76 +45,66 @@ const Hero = () => {
           {/* Left: title + actions */}
           <div>
             <p className="text-sm md:text-base font-medium text-white/70">
-              Hello! I’m{" "}
-              <span className="text-white">Ahmad Adib Syaifulloh</span>
+              Hello! I'm <span className="text-white">ADIB</span>
             </p>
 
-            <h1 className="mt-3 text-5xl sm:text-6xl md:text-7xl leading-tighter font-extrabold tracking-tight text-white">
-              <span className="bg-clip-text text-pink-500">Fullstack</span> Web
-              Developer
+            <h1 className="mt-4 text-5xl sm:text-6xl md:text-7xl leading-tight font-extrabold tracking-tight text-white">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-fuchsia-400">
+                Fullstack
+              </span>{" "}
+              Web Developer
             </h1>
 
-            {/* CTA buttons */}
-            {/* <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-10 flex items-center gap-4">
               <a
-                href="#projects"
-                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-[#27005D] text-white px-5 py-3 font-medium shadow-lg shadow-violet-900/30 hover:shadow-violet-900/40 transition"
+                href="https://github.com/adibsya"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub"
+                className="w-12 h-12 grid place-items-center rounded-xl bg-white/5 border border-white/10 
+                           text-white/80 hover:text-white hover:bg-white/10 hover:border-pink-500/30 
+                           hover:scale-110 transition-all duration-300"
               >
-                View Projects
+                <Icon.github className="w-6 h-6" />
               </a>
               <a
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-xl px-5 py-3 font-medium text-white/90 bg-white/5 border border-white/10 hover:bg-white/10 transition"
+                href="mailto:ahmadadibsyaifulloh@gmail.com"
+                aria-label="Email"
+                className="w-12 h-12 grid place-items-center rounded-xl bg-white/5 border border-white/10 
+                           text-white/80 hover:text-white hover:bg-white/10 hover:border-pink-500/30 
+                           hover:scale-110 transition-all duration-300"
               >
-                Contact Me
+                <Icon.mail className="w-6 h-6" />
               </a>
-            </div> */}
-
-            {/* Socials */}
+              <a
+                href="https://www.linkedin.com/in/adibsya/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                className="w-12 h-12 grid place-items-center rounded-xl bg-white/5 border border-white/10 
+                           text-white/80 hover:text-white hover:bg-white/10 hover:border-pink-500/30 
+                           hover:scale-110 transition-all duration-300"
+              >
+                <Icon.linkedin className="w-6 h-6" />
+              </a>
+            </div>
           </div>
 
           {/* Right: value prop */}
-          <div className="lg:pl-6">
-            <p className="text-xl md:text-2xl leading-relaxed text-white/80 text-justify">
+          <div className="lg:pl-8">
+            <p className="text-lg md:text-xl leading-relaxed text-white/75">
               I build fast, scalable, and delightful web applications across{" "}
-              <span className="text-pink-500">frontend</span> and{" "}
-              <span className="text-pink-500">backend</span>—from polished
-              interfaces to robust APIs and data layers.
+              <span className="text-pink-400 font-semibold">frontend</span> and{" "}
+              <span className="text-pink-400 font-semibold">backend</span>
+              —from polished interfaces to robust APIs and data layers.
             </p>
-          </div>
-          <div className="mt-8 flex items-center gap-5">
-            <a
-              href="https://github.com/adibsya"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              className="size-13 grid place-items-center rounded-xl bg-white/5 border border-white/10 text-white/90 hover:text-white hover:bg-white/10 transition"
-            >
-              <Icon.github className="w-11.5 h-10" />
-            </a>
-            <a
-              href="mailto:ahmadadibsyaifulloh@gmail.com"
-              aria-label="Email"
-              className="size-13 grid place-items-center rounded-xl bg-white/5 border border-white/10 text-white/90 hover:text-white hover:bg-white/10 transition"
-            >
-              <Icon.mail className="w-10 h-10" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/adibsya/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="size-13 grid place-items-center rounded-xl bg-white/5 border border-white/10 text-white/90 hover:text-white hover:bg-white/10 transition"
-            >
-              <Icon.linkedin className="w-10 h-10" />
-            </a>
           </div>
         </div>
 
         {/* Tech marquee */}
-        <div className="mt-12 relative overflow-hidden edge-fade">
+        <div className="mt-16 relative overflow-hidden edge-fade">
           <div
-            className="flex w-max animate-scroll-fast hover:animate-paused
+            className="flex w-max animate-scroll hover:animate-paused
                        gap-0 transform-gpu [will-change:transform]"
           >
             {/* 1st copy */}

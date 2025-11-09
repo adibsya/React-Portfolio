@@ -37,23 +37,48 @@ const Contact = ({ action }) => {
   };
 
   return (
-    <section id="contact" className="relative scroll-mt-24 py-16 md:py-24">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+    <section id="contact" className="relative scroll-mt-24 py-20 md:py-28">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Left: copy */}
           <div>
-            <p className="text-sm font-medium text-white/70">Let’s Discuss</p>
-            <h2 className="mt-2 text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-pink-300/80">
+              Let's Connect
+            </p>
+            <h2 className="mt-3 text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+              Get In{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-300 to-pink-400">
-                Contact
+                Touch
               </span>
             </h2>
-            <p className="mt-4 text-white/75">
-              Have a question or a project in mind? Feel free to reach out.
+            <p className="mt-5 text-base text-white/70 leading-relaxed">
+              Have a question or a project in mind? Feel free to reach out. I'm
+              always open to discussing new projects and opportunities.
             </p>
-            <p className="mt-3 text-white/60">
-              Location: <span className="text-white">Surabaya, Indonesia</span>
-            </p>
+            <div className="mt-6 space-y-3">
+              <div className="flex items-center gap-3 text-white/60">
+                <svg
+                  className="w-5 h-5 text-pink-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                <span className="text-white/80">Surabaya, Indonesia</span>
+              </div>
+            </div>
           </div>
 
           {/* Right: form */}
@@ -144,10 +169,13 @@ const Contact = ({ action }) => {
                   type="submit"
                   disabled={status === "sending"}
                   className="w-full rounded-xl px-5 py-3 font-medium text-white
-                             bg-white/10 border border-white/10 hover:bg-white/15
-                             disabled:opacity-60 disabled:cursor-not-allowed transition"
+                             bg-gradient-to-r from-pink-500 to-fuchsia-500
+                             hover:from-pink-600 hover:to-fuchsia-600
+                             disabled:opacity-60 disabled:cursor-not-allowed 
+                             transition-all duration-300 shadow-lg shadow-pink-500/25
+                             hover:scale-[1.02]"
                 >
-                  {status === "sending" ? "Sending..." : "Submit"}
+                  {status === "sending" ? "Sending..." : "Send Message"}
                 </button>
               </form>
             )}

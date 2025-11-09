@@ -3,8 +3,8 @@ import profileImg from "../assets/profile1.jpg"; // ganti dengan fotomu
 
 const About = () => {
   return (
-    <section id="about" className="relative scroll-mt-24 py-16 md:py-24">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+    <section id="about" className="relative scroll-mt-24 py-20 md:py-28">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Glass card with subtle gradient glow */}
         <div className="relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xl ring-1 ring-white/10 shadow-xl">
           {/* top glow accent */}
@@ -19,16 +19,18 @@ const About = () => {
                 Get to know me
               </p>
 
-              <h2 className="mt-4 text-2xl sm:text-4xl font-extrabold leading-tight text-white">
-                <span className="italic text-white/90">“Sometimes you</span>{" "}
-                <span className="italic text-pink-400">win</span>
-                <span className="italic text-white/90">
-                  , sometimes you
-                </span>{" "}
-                <span className="italic text-pink-400">learn</span>
-                <span className="italic text-white/90">.”</span>
+              <h2 className="mt-5 text-3xl sm:text-4xl font-bold leading-tight text-white">
+                <span className="italic text-white/90">"Sometimes you</span>{" "}
+                <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-fuchsia-400">
+                  win
+                </span>
+                <span className="italic text-white/90">, sometimes you</span>{" "}
+                <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-fuchsia-400">
+                  learn
+                </span>
+                <span className="italic text-white/90">."</span>
               </h2>
-              <p className="mt-2 text-sm text-white/60">— John C. Maxwell</p>
+              <p className="mt-3 text-sm text-white/60">— John C. Maxwell</p>
 
               {/* About me */}
               <p className="mt-6 text-white/80 text-justify">
@@ -51,12 +53,15 @@ const About = () => {
                 consistent.
               </p>
 
-              <div className="mt-8">
+              <div className="mt-10">
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-xl border border-white/15
-                             bg-white/5 px-5 py-3 text-white hover:bg-white/10 hover:border-white/25
-                             transition shadow-sm"
+                  className="inline-flex items-center justify-center rounded-xl 
+                             bg-gradient-to-r from-pink-500 to-fuchsia-500
+                             px-6 py-3 font-medium text-white 
+                             hover:from-pink-600 hover:to-fuchsia-600
+                             hover:scale-105 transition-all duration-300 
+                             shadow-lg shadow-pink-500/25"
                 >
                   Get in touch
                 </a>

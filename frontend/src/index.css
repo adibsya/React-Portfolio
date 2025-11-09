@@ -18,7 +18,7 @@
 
 @layer utilities {
   .animate-scroll {
-    animation: scroll-x 25s linear infinite;
+    animation: scroll-x 30s linear infinite;
   }
   .animate-paused {
     animation-play-state: paused;
@@ -26,10 +26,10 @@
 
   /* tambah opsi lebih cepat */
   .animate-scroll-fast {
-    animation: scroll-x 12s linear infinite;
+    animation: scroll-x 20s linear infinite;
   }
   .animate-scroll-faster {
-    animation: scroll-x 8s linear infinite;
+    animation: scroll-x 15s linear infinite;
   }
 
   /* Nice edge fade (optional) */
