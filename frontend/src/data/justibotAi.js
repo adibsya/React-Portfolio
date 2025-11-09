@@ -16,8 +16,8 @@ This project demonstrates the integration of AI technology in the legal field, m
   date: "March 15, 2024",
   tags: ["AI", "Chatbot", "Python"],
   technologies: ["Python", "OpenAI API", "NLP", "Flask", "MongoDB"],
-  demoLink: "#",
-  githubLink: "#",
+  demoLink: "https://justibot.igsindonesia.org/",
+  githubLink: "https://github.com/adibsya/Project-Justibot",
   features: [
     "Natural language understanding",
     "Legal document analysis",
