@@ -26,8 +26,8 @@ Setiap website yang kami buat dilengkapi dengan teknologi terdepan, desain respo
     "MongoDB",
     "Vercel",
   ],
-  demoLink: "https://ngarumisoft-demo.vercel.app",
-  githubLink: "https://github.com/adibsya/ngarumisoft-website",
+  demoLink: "",
+  githubLink: "https://github.com/adibsya/Ngarumi",
   features: [
     "Paket harga fleksibel mulai dari Rp 1.499K",
     "Desain responsif untuk semua perangkat",

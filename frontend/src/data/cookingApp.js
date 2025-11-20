@@ -23,8 +23,9 @@ Key features include:
   date: "January 10, 2024",
   tags: ["UI/UX", "Figma", "Design"],
   technologies: ["Figma", "Prototyping", "User Research"],
-  demoLink: "#",
-  githubLink: "#",
+  demoLink:
+    "https://www.figma.com/file/EEhGu4PwnY3PJcpTX2vP6k/Desain-Antargojek?type=design&node-id=0%3A1&mode=design&t=QMJzjuaU0dmoqKJw-1",
+  githubLink: "javascript:design-only",
   features: [
     "Beautiful and intuitive user interface",
     "Recipe search with advanced filters",
