@@ -29,15 +29,29 @@ const Hero = () => {
         className="pointer-events-none absolute inset-0 -z-10
                       bg-gradient-to-b
                       from-zinc-950 from-0%
-                      via-[#27005D]/80 via-[45%]
+                      via-[#27005D]/70 via-[45%]
                       to-zinc-950 to-100%"
+      />
+
+      {/* Soft glowing orb - top right */}
+      <div
+        className="pointer-events-none absolute -z-10 -top-20 -right-40 w-[500px] h-[500px]
+                      bg-gradient-to-br from-pink-500/20 to-purple-600/10
+                      rounded-full blur-[100px]"
+      />
+      
+      {/* Soft glowing orb - bottom left */}
+      <div
+        className="pointer-events-none absolute -z-10 top-1/2 -left-40 w-[400px] h-[400px]
+                      bg-gradient-to-tr from-purple-500/15 to-pink-500/10
+                      rounded-full blur-[80px]"
       />
 
       {/* subtle noise to reduce banding */}
       <div
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.035]
-                      [background-image:radial-gradient(#000_1px,transparent_1px)]
-                      [background-size:3px_3px]"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.02]
+                      [background-image:radial-gradient(#fff_1px,transparent_1px)]
+                      [background-size:4px_4px]"
       />
 
       <div className="max-w-7xl mx-auto px-1 sm:px-10">
