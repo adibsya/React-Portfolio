@@ -269,7 +269,7 @@ const ProjectDetail = ({ projectId, onClose }) => {
       {/* Content */}
       <div className="max-w-5xl mx-auto px-5 sm:px-8 py-20 md:py-28">
         {/* Image Slider */}
-        <div className="relative overflow-hidden rounded-2xl aspect-video mb-8 group">
+        <div className="relative overflow-hidden rounded-2xl aspect-video mb-8 group bg-zinc-900">
           {/* Main Image with slide animation */}
           <div className="relative w-full h-full">
             {project.images ? (
@@ -278,7 +278,7 @@ const ProjectDetail = ({ projectId, onClose }) => {
                   key={index}
                   src={img}
                   alt={`${project.title} - Image ${index + 1}`}
-                  className={`w-full h-full object-cover absolute inset-0
+                  className={`w-full h-full object-contain absolute inset-0
                              transition-all duration-600 ease-out
                              ${
                                index === currentImageIndex
@@ -303,7 +303,7 @@ const ProjectDetail = ({ projectId, onClose }) => {
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover absolute inset-0"
+                className="w-full h-full object-contain absolute inset-0"
               />
             )}
           </div>

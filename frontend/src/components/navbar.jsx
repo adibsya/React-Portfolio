@@ -124,7 +124,7 @@ const Navbar = ({ active: activeProp = "home" }) => {
                  w-[calc(100vw-1.5rem)] sm:w-[calc(100vw-3rem)] md:w-[70%] lg:w-[40%]
                  rounded-3xl px-4 sm:px-6 md:px-10 py-2.5 md:py-3
                  flex items-center md:justify-center justify-between gap-0 md:gap-20"
-      style={{ WebkitBackdropFilter: "blur(16px)" }}
+      style={{ WebkitBackdropFilter: "blur(24px)" }}
     >
       {/* underline bergerak — hanya tampil di desktop */}
       <span
@@ -155,7 +155,12 @@ const Navbar = ({ active: activeProp = "home" }) => {
           >
             {/* Icon only on mobile */}
             <Icon id={l.id} className="md:hidden h-5 w-5" />
-            <span className="md:pb-1">{l.label}</span>
+            <span 
+              className="md:pb-1"
+              style={{ textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}
+            >
+              {l.label}
+            </span>
           </a>
         );
       })}
