@@ -121,10 +121,10 @@ const Navbar = ({ active: activeProp = "home" }) => {
       className="fixed left-1/2 -translate-x-1/2 z-[100] bg-[var(--background)]
                  border border-transparent backdrop-blur-xl transition-all duration-500 ease-in-out
                  md:top-6 md:bottom-auto bottom-0
-                 w-[calc(100vw-1.5rem)] sm:w-[calc(100vw-3rem)] md:w-[70%] lg:w-[40%]
-                 rounded-3xl px-4 sm:px-6 md:px-10 py-2.5 md:py-3
+                 w-full md:w-[70%] lg:w-[40%]
+                 rounded-none md:rounded-3xl px-4 sm:px-6 md:px-10 py-2.5 md:py-3
                  flex items-center md:justify-center justify-between gap-0 md:gap-20"
-      style={{ WebkitBackdropFilter: "blur(24px)" }}
+      style={{ WebkitBackdropFilter: "blur(16px)" }}
     >
       {/* underline bergerak — hanya tampil di desktop */}
       <span

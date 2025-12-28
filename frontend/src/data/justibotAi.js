@@ -1,7 +1,7 @@
-import justibotImage from "../assets/justibot.png";
-import justibot1 from "../assets/justibot1.png";
-import justibot2 from "../assets/justibot2.png";
-import justibot3 from "../assets/justibot3.png";
+import justibotImage from "../assets/projects/justibot/justibot.png";
+import justibot1 from "../assets/projects/justibot/justibot1.png";
+import justibot2 from "../assets/projects/justibot/justibot2.png";
+import justibot3 from "../assets/projects/justibot/justibot3.png";
 const justibotAiData = {
   id: 2,
   slug: "justibot-ai",

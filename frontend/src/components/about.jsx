@@ -34,23 +34,19 @@ const About = () => {
 
               {/* About me */}
               <p className="mt-6 text-white/80 text-justify">
-                Hello, my name is <span className="text-white">Adib</span>. I’m
-                a full‑stack web developer focused on building end‑to‑end
-                products—from user‑friendly interfaces to secure and reliable
-                backends. I enjoy turning ideas into clean, fast digital
-                experiences that are easy for teams to build on.
+                Hey! I'm <span className="text-white">Adib</span>, a fullstack 
+                web developer who loves building websites from scratch. From 
+                crafting sleek user interfaces to setting up solid backend systems.
               </p>
               <p className="mt-4 text-white/75 text-justify">
-                On the <span className="text-pink-400">frontend</span>, I work
-                with React, Tailwind CSS, and JavaScript/TypeScript. On the
-                <span className="text-pink-400"> backend</span>, I build APIs
-                with Node.js and Express, using MongoDB or PostgreSQL—including
-                authentication, authorization, and third‑party integrations.
+                On the <span className="text-pink-400">frontend</span>, I work 
+                with React and Tailwind CSS. On the 
+                <span className="text-pink-400"> backend</span>, I build APIs 
+                using Node.js, Express, and databases like MongoDB or PostgreSQL.
               </p>
               <p className="mt-4 text-white/70 text-justify">
-                I enjoy learning new technologies, writing documentation, and
-                setting up simple automation so development stays tidy and
-                consistent.
+                Always excited to learn new tech and love creating solutions 
+                that are simple yet powerful.
               </p>
 
               <div className="mt-10">

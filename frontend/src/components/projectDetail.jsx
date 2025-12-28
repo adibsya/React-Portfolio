@@ -211,6 +211,29 @@ const ProjectDetail = ({ projectId, onClose }) => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [project.images, isTransitioning]);
 
+  // Close modal when navbar is clicked (hash change or scroll)
+  useEffect(() => {
+    const handleHashChange = () => {
+      onClose();
+    };
+
+    // Listen for scroll events on the main page (triggered by navbar)
+    const handleNavClick = (e) => {
+      const navElement = document.getElementById("main-nav");
+      if (navElement && navElement.contains(e.target)) {
+        onClose();
+      }
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    document.addEventListener("click", handleNavClick, true);
+    
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+      document.removeEventListener("click", handleNavClick, true);
+    };
+  }, [onClose]);
+
   // Preload images for smoother transitions
   useEffect(() => {
     if (project.images) {
@@ -479,77 +502,6 @@ const ProjectDetail = ({ projectId, onClose }) => {
 
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-4">
-          {/* Demo Link Button */}
-          {project.demoLink && project.demoLink.trim() !== "" ? (
-            <a
-              href={project.demoLink}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl 
-                         bg-gradient-to-r from-pink-500 to-fuchsia-500
-                         text-white font-medium hover:from-pink-600 hover:to-fuchsia-600
-                         hover:scale-105 transition-all duration-300 shadow-lg shadow-pink-500/25"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                />
-              </svg>
-              View Live Demo
-            </a>
-          ) : (
-            <button
-              ref={(el) => el && (el._notifRef = React.createRef())}
-              onClick={(e) => {
-                const buttonRef = { current: e.currentTarget };
-                showNotification(
-                  "Demo Not Available",
-                  "This project is currently in development or represents a service portfolio.\n\nLive demo is not available at the moment, but you can check the source code on GitHub to see the implementation details.",
-                  "demo",
-                  buttonRef
-                );
-              }}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl 
-                         bg-gradient-to-r from-pink-500 to-fuchsia-500
-                         text-white font-medium hover:from-pink-600 hover:to-fuchsia-600
-                         hover:scale-105 transition-all duration-300 shadow-lg shadow-pink-500/25"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                />
-              </svg>
-              View Live Demo
-            </button>
-          )}
 
           {/* GitHub Link Button */}
           {project.githubLink &&
