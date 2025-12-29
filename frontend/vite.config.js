@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: "/", // Untuk custom domain atau root repository
+  base: "./", // Relative path - works for any GitHub Pages repo
   build: {
     outDir: "dist",
     assetsDir: "assets",
