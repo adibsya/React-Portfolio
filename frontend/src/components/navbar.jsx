@@ -1,56 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-
-const Icon = ({ id, className }) => {
-  switch (id) {
-    case "home":
-      return (
-        <svg
-          viewBox="0 0 24 24"
-          className={className}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M3 10.5 12 3l9 7.5" />
-          <path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5" />
-        </svg>
-      );
-    case "projects":
-      return (
-        <svg
-          viewBox="0 0 24 24"
-          className={className}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M3 7h18v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" />
-          <path d="M3 7l3-3h12l3 3" />
-        </svg>
-      );
-    case "contact":
-      return (
-        <svg
-          viewBox="0 0 24 24"
-          className={className}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M22 3 2 12l7 2 2 7 11-18Z" />
-          <path d="M22 3 9 14" />
-        </svg>
-      );
-    default:
-      return null;
-  }
-};
+import { useEffect, useRef, useState } from "react";
+import { NavIcon } from "./icons";
 
 const Navbar = ({ active: activeProp = "home" }) => {
   const [active, setActive] = useState(activeProp);
@@ -154,7 +103,7 @@ const Navbar = ({ active: activeProp = "home" }) => {
                         }`}
           >
             {/* Icon only on mobile */}
-            <Icon id={l.id} className="md:hidden h-5 w-5" />
+            <NavIcon id={l.id} className="md:hidden h-5 w-5" />
             <span 
               className="md:pb-1"
               style={{ textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}

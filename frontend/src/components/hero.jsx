@@ -1,22 +1,4 @@
-import React from "react";
-
-const Icon = {
-  github: (props) => (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
-      <path d="M12 .5a11.5 11.5 0 0 0-3.64 22.42c.58.11.79-.25.79-.56v-2c-3.22.7-3.9-1.4-3.9-1.4-.53-1.33-1.3-1.7-1.3-1.7-1.06-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.72 1.26 3.38.96.11-.76.41-1.26.76-1.55-2.57-.3-5.27-1.29-5.27-5.77 0-1.28.46-2.33 1.2-3.15-.12-.3-.52-1.52.12-3.16 0 0 .98-.31 3.2 1.2a11.1 11.1 0 0 1 5.82 0c2.22-1.51 3.2-1.2 3.2-1.2.64 1.64.24 2.86.12 3.16.75.82 1.2 1.87 1.2 3.15 0 4.5-2.71 5.47-5.29 5.76.43.37.81 1.09.81 2.2v3.27c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .5Z" />
-    </svg>
-  ),
-  linkedin: (props) => (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
-      <path d="M4.98 3.5a2.5 2.5 0 1 0 .04 5 2.5 2.5 0 0 0-.04-5ZM3 8.98h4v12H3v-12Zm7 0h3.82v1.64h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.65 4.78 6.1v6.21h-4v-5.51c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9v5.61h-4v-12Z" />
-    </svg>
-  ),
-  mail: (props) => (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
-      <path d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11A2.5 2.5 0 0 1 19.5 20h-15A2.5 2.5 0 0 1 2 17.5v-11Zm2.5-.5a.5.5 0 0 0-.5.5v.4l8 4.9 8-4.9v-.4a.5.5 0 0 0-.5-.5h-15Zm15.5 3.54-7.44 4.56a1 1 0 0 1-1.12 0L4 9.54V17.5a.5.5 0 0 0 .5.5h15a.5.5 0 0 0 .5-.5V9.54Z" />
-    </svg>
-  ),
-};
+import { GithubIcon, LinkedinIcon, MailIcon } from "./icons";
 
 const Hero = () => {
   return (
@@ -76,7 +58,7 @@ const Hero = () => {
                            text-white/80 hover:text-white hover:bg-white/10 hover:border-pink-400/30 
                            hover:scale-110 transition-all duration-300"
               >
-                <Icon.github className="w-6 h-6" />
+                <GithubIcon className="w-6 h-6" />
               </a>
               <a
                 href="mailto:ahmadadibsyaifulloh@gmail.com"
@@ -85,7 +67,7 @@ const Hero = () => {
                            text-white/80 hover:text-white hover:bg-white/10 hover:border-pink-400/30 
                            hover:scale-110 transition-all duration-300"
               >
-                <Icon.mail className="w-6 h-6" />
+                <MailIcon className="w-6 h-6" />
               </a>
               <a
                 href="https://www.linkedin.com/in/adibsya/"
@@ -96,7 +78,7 @@ const Hero = () => {
                            text-white/80 hover:text-white hover:bg-white/10 hover:border-pink-400/30 
                            hover:scale-110 transition-all duration-300"
               >
-                <Icon.linkedin className="w-6 h-6" />
+                <LinkedinIcon className="w-6 h-6" />
               </a>
             </div>
           </div>

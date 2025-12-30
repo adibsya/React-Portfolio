@@ -1,4 +1,3 @@
-import React from "react";
 import profileImg from "../assets/profile1.jpg"; // ganti dengan fotomu
 
 const About = () => {
