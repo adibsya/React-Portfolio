@@ -235,6 +235,26 @@ const ProjectDetail = ({ projectId, onClose }) => {
                 <div className="relative overflow-hidden rounded-lg bg-zinc-950 aspect-video shadow-inner">
                   {/* Main Image with slide animation */}
                   <div className="relative w-full h-full flex items-center justify-center">
+                    {/* Blur Placeholder - shown while loading */}
+                    {imageLoading && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-zinc-900/50 backdrop-blur-sm z-10">
+                        <div className="flex flex-col items-center gap-3">
+                          <div className="w-8 h-8 border-2 border-pink-500 border-t-transparent rounded-full animate-spin"></div>
+                          <span className="text-xs text-white/60">Loading...</span>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Error State */}
+                    {imageError && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-zinc-900/80 z-10">
+                        <div className="text-center px-4">
+                          <div className="text-4xl mb-2">⚠️</div>
+                          <p className="text-white/70 text-sm">Failed to load image</p>
+                        </div>
+                      </div>
+                    )}
+
                     <AnimatePresence initial={false} custom={direction} mode="wait">
                       {project.images ? (
                         <motion.img
@@ -250,7 +270,16 @@ const ProjectDetail = ({ projectId, onClose }) => {
                           }}
                           src={project.images[currentImageIndex]}
                           alt={`${project.title} - Image ${currentImageIndex + 1}`}
-                          className="max-w-full max-h-full object-contain"
+                          className={`max-w-full max-h-full object-contain transition-all duration-300 ${imageLoading ? 'blur-sm scale-95 opacity-0' : 'blur-0 scale-100 opacity-100'
+                            }`}
+                          onLoad={() => {
+                            setImageLoading(false);
+                            setImageError(false);
+                          }}
+                          onError={() => {
+                            setImageLoading(false);
+                            setImageError(true);
+                          }}
                         />
                       ) : (
                         <motion.img
@@ -258,7 +287,16 @@ const ProjectDetail = ({ projectId, onClose }) => {
                           animate={{ opacity: 1 }}
                           src={project.image}
                           alt={project.title}
-                          className="max-w-full max-h-full object-contain"
+                          className={`max-w-full max-h-full object-contain transition-all duration-300 ${imageLoading ? 'blur-sm scale-95 opacity-0' : 'blur-0 scale-100 opacity-100'
+                            }`}
+                          onLoad={() => {
+                            setImageLoading(false);
+                            setImageError(false);
+                          }}
+                          onError={() => {
+                            setImageLoading(false);
+                            setImageError(true);
+                          }}
                         />
                       )}
                     </AnimatePresence>
