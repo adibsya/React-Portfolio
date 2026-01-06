@@ -59,6 +59,8 @@ const ProjectDetail = ({ projectId, onClose }) => {
   const handleDotClick = (index) => {
     if (index !== currentImageIndex) {
       setDirection(index > currentImageIndex ? 1 : -1);
+      setImageLoading(true);
+      setImageError(false);
       setCurrentImageIndex(index);
     }
   };
@@ -102,15 +104,21 @@ const ProjectDetail = ({ projectId, onClose }) => {
     };
   }, [onClose]);
 
-  // Preload images for smoother transitions
+  // Smart preloading - only preload next and previous images
   useEffect(() => {
-    if (project.images) {
-      project.images.forEach((src) => {
+    if (project.images && project.images.length > 1) {
+      const nextIndex = (currentImageIndex + 1) % project.images.length;
+      const prevIndex = currentImageIndex === 0
+        ? project.images.length - 1
+        : currentImageIndex - 1;
+
+      // Preload only adjacent images
+      [nextIndex, prevIndex].forEach(index => {
         const img = new Image();
-        img.src = src;
+        img.src = project.images[index];
       });
     }
-  }, [project.images]);
+  }, [currentImageIndex, project.images]);
 
   if (!project) {
     return (
