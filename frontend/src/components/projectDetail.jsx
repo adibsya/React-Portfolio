@@ -15,6 +15,8 @@ const ProjectDetail = ({ projectId, onClose }) => {
   const project = getProjectBySlug(projectId);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [direction, setDirection] = useState(1); // 1 for next, -1 for prev
+  const [imageLoading, setImageLoading] = useState(true);
+  const [imageError, setImageError] = useState(false);
   const [notification, setNotification] = useState({
     isOpen: false,
     title: "",
@@ -35,6 +37,8 @@ const ProjectDetail = ({ projectId, onClose }) => {
   const handleNextImage = () => {
     if (project.images) {
       setDirection(1);
+      setImageLoading(true);
+      setImageError(false);
       setCurrentImageIndex((prev) =>
         prev === project.images.length - 1 ? 0 : prev + 1
       );
@@ -44,6 +48,8 @@ const ProjectDetail = ({ projectId, onClose }) => {
   const handlePrevImage = () => {
     if (project.images) {
       setDirection(-1);
+      setImageLoading(true);
+      setImageError(false);
       setCurrentImageIndex((prev) =>
         prev === 0 ? project.images.length - 1 : prev - 1
       );

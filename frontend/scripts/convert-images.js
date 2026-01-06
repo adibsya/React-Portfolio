@@ -1,6 +1,11 @@
-const sharp = require('sharp');
-const fs = require('fs');
-const path = require('path');
+import sharp from 'sharp';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Get __dirname equivalent in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Directories
 const sourceDir = path.join(__dirname, '../src/assets/projects');
@@ -118,3 +123,4 @@ async function convertAllImages() {
 
 // Run the conversion
 convertAllImages().catch(console.error);
+
