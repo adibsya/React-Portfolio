@@ -1,9 +1,9 @@
-import stockImage from "../assets/projects/stock-management/stock.png";
-import stock1 from "../assets/projects/stock-management/stock1.png";
-import stock2 from "../assets/projects/stock-management/stock2.png";
-import stock3 from "../assets/projects/stock-management/stock3.png";
-import stock4 from "../assets/projects/stock-management/stock4.png";
-import stock5 from "../assets/projects/stock-management/stock5.png";
+import stockImage from "../assets/projects-optimized/stock-management/stock.webp";
+import stock1 from "../assets/projects-optimized/stock-management/stock1.webp";
+import stock2 from "../assets/projects-optimized/stock-management/stock2.webp";
+import stock3 from "../assets/projects-optimized/stock-management/stock3.webp";
+import stock4 from "../assets/projects-optimized/stock-management/stock4.webp";
+import stock5 from "../assets/projects-optimized/stock-management/stock5.webp";
 
 const stockManagementData = {
   id: 4,
