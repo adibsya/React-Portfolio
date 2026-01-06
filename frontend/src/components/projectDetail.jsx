@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { getProjectBySlug } from "../data";
 import NotificationModal from "./NotificationModal";
 import {
@@ -13,8 +14,7 @@ import {
 const ProjectDetail = ({ projectId, onClose }) => {
   const project = getProjectBySlug(projectId);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [direction, setDirection] = useState("next");
+  const [direction, setDirection] = useState(1); // 1 for next, -1 for prev
   const [notification, setNotification] = useState({
     isOpen: false,
     title: "",
@@ -33,33 +33,27 @@ const ProjectDetail = ({ projectId, onClose }) => {
   };
 
   const handleNextImage = () => {
-    if (project.images && !isTransitioning) {
-      setIsTransitioning(true);
-      setDirection("next");
+    if (project.images) {
+      setDirection(1);
       setCurrentImageIndex((prev) =>
         prev === project.images.length - 1 ? 0 : prev + 1
       );
-      setTimeout(() => setIsTransitioning(false), 600);
     }
   };
 
   const handlePrevImage = () => {
-    if (project.images && !isTransitioning) {
-      setIsTransitioning(true);
-      setDirection("prev");
+    if (project.images) {
+      setDirection(-1);
       setCurrentImageIndex((prev) =>
         prev === 0 ? project.images.length - 1 : prev - 1
       );
-      setTimeout(() => setIsTransitioning(false), 600);
     }
   };
 
   const handleDotClick = (index) => {
-    if (!isTransitioning && index !== currentImageIndex) {
-      setIsTransitioning(true);
-      setDirection(index > currentImageIndex ? "next" : "prev");
+    if (index !== currentImageIndex) {
+      setDirection(index > currentImageIndex ? 1 : -1);
       setCurrentImageIndex(index);
-      setTimeout(() => setIsTransitioning(false), 600);
     }
   };
 
@@ -77,7 +71,7 @@ const ProjectDetail = ({ projectId, onClose }) => {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [project.images, isTransitioning]);
+  }, [project.images]);
 
   // Close modal when navbar is clicked (hash change or scroll)
   useEffect(() => {
@@ -95,7 +89,7 @@ const ProjectDetail = ({ projectId, onClose }) => {
 
     window.addEventListener("hashchange", handleHashChange);
     document.addEventListener("click", handleNavClick, true);
-    
+
     return () => {
       window.removeEventListener("hashchange", handleHashChange);
       document.removeEventListener("click", handleNavClick, true);
@@ -114,8 +108,17 @@ const ProjectDetail = ({ projectId, onClose }) => {
 
   if (!project) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/95 backdrop-blur-sm p-4">
-        <div className="text-center text-white">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/95 backdrop-blur-sm p-4"
+      >
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          className="text-center text-white"
+        >
           <h2 className="text-2xl font-bold">Project Not Found</h2>
           <button
             onClick={onClose}
@@ -125,15 +128,61 @@ const ProjectDetail = ({ projectId, onClose }) => {
           >
             Back to Projects
           </button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     );
   }
 
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? "100%" : "-100%",
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction) => ({
+      x: direction > 0 ? "-100%" : "100%",
+      opacity: 0,
+    }),
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.4,
+        ease: [0.4, 0, 0.2, 1],
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
+    },
+  };
+
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-zinc-950/95 backdrop-blur-sm">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="fixed inset-0 z-50 overflow-y-auto bg-zinc-950/95 backdrop-blur-sm"
+    >
       {/* Close button */}
-      <button
+      <motion.button
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.2 }}
         onClick={onClose}
         className="fixed top-6 right-6 z-10 w-12 h-12 rounded-xl 
                    bg-pink-500/10 border border-pink-500/30 
@@ -143,197 +192,256 @@ const ProjectDetail = ({ projectId, onClose }) => {
         aria-label="Close"
       >
         <CloseIcon className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" />
-      </button>
+      </motion.button>
 
       {/* Content */}
-      <div className="max-w-5xl mx-auto px-5 sm:px-8 py-20 md:py-28">
-        {/* Image Slider */}
-        <div className="relative overflow-hidden rounded-2xl aspect-video mb-8 group bg-zinc-900">
-          {/* Main Image with slide animation */}
-          <div className="relative w-full h-full">
-            {project.images ? (
-              project.images.map((img, index) => (
-                <img
-                  key={index}
-                  src={img}
-                  alt={`${project.title} - Image ${index + 1}`}
-                  className={`w-full h-full object-contain absolute inset-0
-                             transition-all duration-600 ease-out
-                             ${
-                               index === currentImageIndex
-                                 ? "opacity-100 translate-x-0 scale-100 z-10"
-                                 : index < currentImageIndex
-                                 ? "opacity-0 -translate-x-full scale-95 z-0"
-                                 : "opacity-0 translate-x-full scale-95 z-0"
-                             }
-                             ${
-                               isTransitioning && index === currentImageIndex
-                                 ? direction === "next"
-                                   ? "translate-x-0"
-                                   : "translate-x-0"
-                                 : ""
-                             }`}
-                  style={{
-                    transition: "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
-                  }}
-                />
-              ))
-            ) : (
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-contain absolute inset-0"
-              />
-            )}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="max-w-5xl mx-auto px-5 sm:px-8 py-20 md:py-28"
+      >
+        {/* Laptop Frame Mockup */}
+        <motion.div
+          variants={itemVariants}
+          className="mb-10 group"
+        >
+          {/* Laptop Container */}
+          <div className="relative max-w-4xl mx-auto perspective-1000">
+            {/* Laptop Screen */}
+            <div className="relative transform-style-3d" style={{ transform: 'rotateX(2deg)' }}>
+              {/* Screen Bezel */}
+              <div className="relative bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-t-2xl p-3 shadow-2xl border-t border-x border-zinc-700">
+                {/* Webcam */}
+                <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-zinc-950 border border-zinc-600 z-10">
+                  <div className="absolute inset-0.5 rounded-full bg-gradient-to-br from-blue-900/30 to-transparent"></div>
+                </div>
+
+                {/* Screen Display Area */}
+                <div className="relative overflow-hidden rounded-lg bg-black aspect-video shadow-inner">
+                  {/* Main Image with slide animation */}
+                  <div className="relative w-full h-full">
+                    <AnimatePresence initial={false} custom={direction} mode="wait">
+                      {project.images ? (
+                        <motion.img
+                          key={currentImageIndex}
+                          custom={direction}
+                          variants={slideVariants}
+                          initial="enter"
+                          animate="center"
+                          exit="exit"
+                          transition={{
+                            x: { type: "spring", stiffness: 300, damping: 30 },
+                            opacity: { duration: 0.3 },
+                          }}
+                          src={project.images[currentImageIndex]}
+                          alt={`${project.title} - Image ${currentImageIndex + 1}`}
+                          className="w-full h-full object-cover absolute inset-0"
+                        />
+                      ) : (
+                        <motion.img
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover absolute inset-0"
+                        />
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Screen Glare Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
+
+                  {/* Navigation Buttons - Only show if multiple images */}
+                  {project.images && project.images.length > 1 && (
+                    <>
+                      {/* Previous Button */}
+                      <button
+                        onClick={handlePrevImage}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full
+                                   bg-zinc-900/90 backdrop-blur-md border border-white/20
+                                   text-white hover:bg-zinc-800 hover:border-pink-500/60 hover:scale-110
+                                   opacity-0 group-hover:opacity-100 transition-all duration-300
+                                   flex items-center justify-center z-10 active:scale-95
+                                   shadow-xl shadow-black/50"
+                        aria-label="Previous image"
+                      >
+                        <ChevronLeftIcon className="w-5 h-5" />
+                      </button>
+
+                      {/* Next Button */}
+                      <button
+                        onClick={handleNextImage}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full
+                                   bg-zinc-900/90 backdrop-blur-md border border-white/20
+                                   text-white hover:bg-zinc-800 hover:border-pink-500/60 hover:scale-110
+                                   opacity-0 group-hover:opacity-100 transition-all duration-300
+                                   flex items-center justify-center z-10 active:scale-95
+                                   shadow-xl shadow-black/50"
+                        aria-label="Next image"
+                      >
+                        <ChevronRightIcon className="w-5 h-5" />
+                      </button>
+
+                      {/* Image Counter */}
+                      <div
+                        className="absolute top-3 right-3 px-2.5 py-1 rounded-full
+                                      bg-zinc-900/80 backdrop-blur-md border border-white/20
+                                      text-white text-xs font-medium z-10
+                                      shadow-lg shadow-black/30"
+                      >
+                        {currentImageIndex + 1} / {project.images.length}
+                      </div>
+
+                      {/* Dot Indicators */}
+                      <div
+                        className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10
+                                      bg-zinc-900/60 backdrop-blur-md px-3 py-2 rounded-full
+                                      border border-white/10 shadow-xl shadow-black/40"
+                      >
+                        {project.images.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => handleDotClick(index)}
+                            className={`rounded-full transition-all duration-300 ease-out
+                                        ${index === currentImageIndex
+                                ? "w-6 h-1.5 bg-pink-500 shadow-lg shadow-pink-500/50"
+                                : "w-1.5 h-1.5 bg-white/40 hover:bg-white/70 hover:scale-125"
+                              }`}
+                            aria-label={`Go to image ${index + 1}`}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              {/* Laptop Base/Keyboard */}
+              <div className="relative">
+                {/* Hinge */}
+                <div className="h-1 bg-gradient-to-r from-zinc-700 via-zinc-600 to-zinc-700 shadow-inner"></div>
+
+                {/* Keyboard Base */}
+                <div className="bg-gradient-to-b from-zinc-800 to-zinc-900 rounded-b-2xl px-4 py-6 shadow-2xl border-b border-x border-zinc-700">
+                  {/* Keyboard Area */}
+                  <div className="mb-3 grid grid-cols-12 gap-0.5 opacity-40">
+                    {/* Simplified keyboard representation */}
+                    {[...Array(36)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="h-1.5 rounded-sm bg-zinc-700/60 col-span-1"
+                      ></div>
+                    ))}
+                  </div>
+
+                  {/* Trackpad */}
+                  <div className="mx-auto w-32 h-16 rounded-lg bg-zinc-700/30 border border-zinc-600/40 shadow-inner"></div>
+                </div>
+              </div>
+            </div>
           </div>
-
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/20 to-transparent pointer-events-none" />
-
-          {/* Navigation Buttons - Only show if multiple images */}
-          {project.images && project.images.length > 1 && (
-            <>
-              {/* Previous Button */}
-              <button
-                onClick={handlePrevImage}
-                disabled={isTransitioning}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full
-                           bg-black/50 backdrop-blur-sm border border-white/20
-                           text-white hover:bg-black/70 hover:border-pink-500/50 hover:scale-110
-                           disabled:opacity-50 disabled:cursor-not-allowed
-                           opacity-0 group-hover:opacity-100 transition-all duration-300
-                           flex items-center justify-center z-10 active:scale-95"
-                aria-label="Previous image"
-              >
-                <ChevronLeftIcon className="w-6 h-6" />
-              </button>
-
-              {/* Next Button */}
-              <button
-                onClick={handleNextImage}
-                disabled={isTransitioning}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full
-                           bg-black/50 backdrop-blur-sm border border-white/20
-                           text-white hover:bg-black/70 hover:border-pink-500/50 hover:scale-110
-                           disabled:opacity-50 disabled:cursor-not-allowed
-                           opacity-0 group-hover:opacity-100 transition-all duration-300
-                           flex items-center justify-center z-10 active:scale-95"
-                aria-label="Next image"
-              >
-                <ChevronRightIcon className="w-6 h-6" />
-              </button>
-
-              {/* Image Counter */}
-              <div
-                className="absolute top-4 right-4 px-3 py-1.5 rounded-full
-                              bg-black/60 backdrop-blur-md border border-white/20
-                              text-white text-sm font-medium z-10
-                              transition-all duration-300"
-              >
-                {currentImageIndex + 1} / {project.images.length}
-              </div>
-
-              {/* Dot Indicators */}
-              <div
-                className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10
-                              bg-black/30 backdrop-blur-sm px-3 py-2 rounded-full"
-              >
-                {project.images.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleDotClick(index)}
-                    disabled={isTransitioning}
-                    className={`rounded-full transition-all duration-500 ease-out
-                                disabled:cursor-not-allowed
-                                ${
-                                  index === currentImageIndex
-                                    ? "w-8 h-2 bg-pink-500 shadow-lg shadow-pink-500/50"
-                                    : "w-2 h-2 bg-white/50 hover:bg-white/80 hover:scale-125"
-                                }`}
-                    aria-label={`Go to image ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </>
-          )}
-        </div>
+        </motion.div>
 
         {/* Title & Meta */}
-        <div className="mb-8">
+        <motion.div variants={itemVariants} className="mb-10">
           <div className="flex flex-wrap gap-2 mb-4">
-            {project.tags.map((tag) => (
-              <span
+            {project.tags.map((tag, index) => (
+              <motion.span
                 key={tag}
-                className="px-3 py-1 text-xs font-medium rounded-full 
-                           bg-pink-500/10 text-pink-300 ring-1 ring-pink-500/20"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3 + index * 0.05 }}
+                className="px-3 py-1.5 text-xs font-medium rounded-full 
+                           bg-pink-500/10 text-pink-300 ring-1 ring-pink-500/20
+                           backdrop-blur-sm"
               >
                 {tag}
-              </span>
+              </motion.span>
             ))}
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-3">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
             {project.title}
           </h1>
 
-          <p className="text-white/60 text-sm">{project.date}</p>
-        </div>
+          <p className="text-white/50 text-sm font-medium">{project.date}</p>
+        </motion.div>
 
         {/* Description */}
-        <div className="prose prose-invert max-w-none mb-12">
-          <p className="text-lg text-white/80 leading-relaxed whitespace-pre-line">
+        <motion.div variants={itemVariants} className="mb-12">
+          <h2 className="text-xl font-semibold text-white/90 mb-4">
+            About This Project
+          </h2>
+          <p className="text-base text-white/70 leading-relaxed whitespace-pre-line">
             {project.fullDescription}
           </p>
-        </div>
-
-        {/* Features */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-white mb-6">Key Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {project.features.map((feature, index) => (
-              <div
-                key={index}
-                className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10"
-              >
-                <CheckIcon className="w-5 h-5 text-pink-400 flex-shrink-0 mt-0.5" />
-                <span className="text-white/75">{feature}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+        </motion.div>
 
         {/* Technologies */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-white mb-6">
+        <motion.div variants={itemVariants} className="mb-12">
+          <h2 className="text-xl font-semibold text-white/90 mb-5">
             Technologies Used
           </h2>
-          <div className="flex flex-wrap gap-3">
-            {project.technologies.map((tech) => (
-              <span
+          <div className="flex flex-wrap gap-2.5">
+            {project.technologies.map((tech, index) => (
+              <motion.span
                 key={tech}
-                className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white/80
-                           hover:bg-white/10 hover:border-pink-500/30 transition-all"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + index * 0.05 }}
+                className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 
+                           text-white/80 text-sm font-medium backdrop-blur-sm
+                           hover:bg-white/10 hover:border-pink-500/30 hover:text-white
+                           transition-all duration-300 hover:scale-105
+                           shadow-sm"
               >
                 {tech}
-              </span>
+              </motion.span>
             ))}
           </div>
-        </div>
+        </motion.div>
+
+        {/* Features */}
+        <motion.div variants={itemVariants} className="mb-12">
+          <h2 className="text-xl font-semibold text-white/90 mb-5">
+            Key Features
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {project.features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 + index * 0.05 }}
+                className="flex items-start gap-3 p-4 rounded-xl 
+                           bg-white/5 border border-white/10 backdrop-blur-sm
+                           hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+              >
+                <CheckIcon className="w-5 h-5 text-pink-400 flex-shrink-0 mt-0.5" />
+                <span className="text-white/70 text-sm leading-relaxed">
+                  {feature}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* Action Buttons */}
-        <div className="flex flex-wrap gap-4">
-
+        <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
           {/* GitHub Link Button */}
           {project.githubLink &&
-          !project.githubLink.startsWith("javascript:") &&
-          project.githubLink.trim() !== "" ? (
+            !project.githubLink.startsWith("javascript:") &&
+            project.githubLink.trim() !== "" ? (
             <a
               href={project.githubLink}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl 
                          bg-white/5 border border-white/10 text-white font-medium
-                         hover:bg-white/10 hover:border-pink-500/30 transition-all duration-300"
+                         hover:bg-white/10 hover:border-pink-500/30 transition-all duration-300
+                         hover:scale-105 shadow-lg shadow-black/10"
             >
               <GithubIcon className="w-5 h-5" />
               View on GitHub
@@ -363,7 +471,8 @@ const ProjectDetail = ({ projectId, onClose }) => {
               }}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl 
                          bg-white/5 border border-white/10 text-white font-medium
-                         hover:bg-white/10 hover:border-pink-500/30 transition-all duration-300"
+                         hover:bg-white/10 hover:border-pink-500/30 transition-all duration-300
+                         hover:scale-105 shadow-lg shadow-black/10"
             >
               <GithubIcon className="w-5 h-5" />
               View on GitHub
@@ -381,8 +490,8 @@ const ProjectDetail = ({ projectId, onClose }) => {
             <ArrowLeftIcon className="w-4 h-4" />
             Back to Projects
           </button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Notification Modal */}
       <NotificationModal
@@ -393,7 +502,7 @@ const ProjectDetail = ({ projectId, onClose }) => {
         type={notification.type}
         buttonRef={clickedButtonRef}
       />
-    </div>
+    </motion.div>
   );
 };
 
