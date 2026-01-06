@@ -1,9 +1,9 @@
-import inventarisImage from "../assets/projects/management-inventaris/inventaris.png";
-import inventaris1 from "../assets/projects/management-inventaris/inventaris1.png";
-import inventaris2 from "../assets/projects/management-inventaris/inventaris2.png";
-import inventaris3 from "../assets/projects/management-inventaris/inventaris3.png";
-import inventaris4 from "../assets/projects/management-inventaris/inventaris4.png";
-import inventaris5 from "../assets/projects/management-inventaris/inventaris5.png";
+import inventarisImage from "../assets/projects-optimized/management-inventaris/inventaris.webp";
+import inventaris1 from "../assets/projects-optimized/management-inventaris/inventaris1.webp";
+import inventaris2 from "../assets/projects-optimized/management-inventaris/inventaris2.webp";
+import inventaris3 from "../assets/projects-optimized/management-inventaris/inventaris3.webp";
+import inventaris4 from "../assets/projects-optimized/management-inventaris/inventaris4.webp";
+import inventaris5 from "../assets/projects-optimized/management-inventaris/inventaris5.webp";
 
 const esimsData = {
   id: 5,
