@@ -1,7 +1,7 @@
-import cookingAppimage from "../assets/projects/cooking-app/cookingApp.png";
-import cookingApp1 from "../assets/projects/cooking-app/cookingApp1.png";
-import cookingApp2 from "../assets/projects/cooking-app/cookingApp2.png";
-import cookingApp3 from "../assets/projects/cooking-app/cookingApp3.png";
+import cookingAppimage from "../assets/projects-optimized/cooking-app/cookingApp.webp";
+import cookingApp1 from "../assets/projects-optimized/cooking-app/cookingApp1.webp";
+import cookingApp2 from "../assets/projects-optimized/cooking-app/cookingApp2.webp";
+import cookingApp3 from "../assets/projects-optimized/cooking-app/cookingApp3.webp";
 
 const cookingAppData = {
   id: 1,
