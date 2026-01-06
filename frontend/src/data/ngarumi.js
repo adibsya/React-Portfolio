@@ -1,7 +1,7 @@
-import ngarumi1 from "../assets/projects/ngarumi/ngarumi (1).png";
-import ngarumi2 from "../assets/projects/ngarumi/ngarumi (2).png";
-import ngarumi3 from "../assets/projects/ngarumi/ngarumi (3).png";
-import ngarumi4 from "../assets/projects/ngarumi/ngarumi (4).png";
+import ngarumi1 from "../assets/projects-optimized/ngarumi/ngarumi (1).webp";
+import ngarumi2 from "../assets/projects-optimized/ngarumi/ngarumi (2).webp";
+import ngarumi3 from "../assets/projects-optimized/ngarumi/ngarumi (3).webp";
+import ngarumi4 from "../assets/projects-optimized/ngarumi/ngarumi (4).webp";
 
 const ngarumiData = {
   id: 3,
