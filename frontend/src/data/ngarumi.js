@@ -13,7 +13,19 @@ const ngarumiData = {
 
 Dengan pengalaman dalam membangun berbagai jenis website - mulai dari company profile, e-commerce, hingga website institusi pendidikan - kami siap mewujudkan visi digital bisnis Anda. 
 
-Setiap website yang kami buat dilengkapi dengan teknologi terdepan, desain responsif, optimasi SEO, dan performa yang cepat untuk memastikan pengalaman pengguna yang optimal dan konversi bisnis yang maksimal.`,
+Setiap website yang kami buat dilengkapi dengan teknologi terdepan, desain responsif, optimasi SEO, dan performa yang cepat untuk memastikan pengalaman pengguna yang optimal dan konversi bisnis yang maksimal.
+
+💰 Paket Harga Fleksibel: Solusi terjangkau mulai dari Rp 1.499K dengan berbagai pilihan paket sesuai kebutuhan dan budget bisnis Anda.
+
+📱 Desain Responsif: Website yang sempurna di semua perangkat - smartphone, tablet, hingga desktop dengan tampilan yang konsisten dan user-friendly.
+
+🚀 Optimasi SEO Premium: Tingkatkan ranking Google dengan optimasi SEO terbaik, meta tags terstruktur, dan strategi konten yang tepat sasaran.
+
+🌐 Paket Lengkap: Gratis hosting dan domain premium selama 1 tahun penuh, tanpa biaya tersembunyi untuk memulai bisnis online Anda.
+
+🛠️ Support Extended: Dukungan teknis hingga 90 hari setelah launch untuk memastikan website berjalan lancar dan optimal.
+
+⚡ Proses Cepat: Website profesional siap dalam 1-3 hari kerja dengan jaminan kualitas, konsultasi gratis, dan revisi unlimited hingga Anda puas.`,
   image: ngarumi1,
   images: [ngarumi1, ngarumi2, ngarumi3, ngarumi4],
   date: "November 8, 2024",

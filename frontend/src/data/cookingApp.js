@@ -11,13 +11,17 @@ const cookingAppData = {
     "A modern cooking application design focused on user experience and beautiful interface. This project showcases meal planning, recipe discovery, and cooking timer features.",
   fullDescription: `This comprehensive cooking app design was created to help home cooks discover new recipes, plan their meals, and improve their cooking skills. The app features an intuitive interface with smart search capabilities, personalized recipe recommendations, and step-by-step cooking instructions.
 
-Key features include:
-- Recipe discovery with advanced filtering
-- Meal planning calendar
-- Shopping list generator
-- Cooking timers and reminders
-- Nutritional information tracking
-- Social sharing capabilities`,
+🔍 Recipe Discovery: Advanced filtering system to find the perfect recipes based on ingredients, cuisine type, difficulty level, and dietary preferences.
+
+📅 Meal Planning: Interactive calendar to plan your weekly meals with drag-and-drop functionality and automatic nutritional balancing.
+
+🛒 Smart Shopping Lists: Auto-generated shopping lists based on your meal plans, with ingredient organization by store sections.
+
+⏱️ Cooking Assistance: Built-in timers and smart reminders to ensure perfect timing for every dish and cooking step.
+
+📊 Nutrition Tracking: Detailed nutritional breakdown with calorie counting and macro tracking to support your health goals.
+
+🌐 Social Features: Share your favorite recipes and culinary creations with the community, and discover trending dishes.`,
   image: cookingAppimage,
   images: [cookingAppimage, cookingApp1, cookingApp2, cookingApp3],
   date: "January 10, 2024",
