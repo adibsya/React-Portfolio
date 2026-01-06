@@ -2,6 +2,7 @@ import cookingAppData from "./cookingApp";
 import justibotAiData from "./justibotAi";
 import ngarumiData from "./ngarumi";
 import stockManagementData from "./stockManagement";
+import esimsData from "./esims";
 
 // Central project data registry
 const projectsData = {
@@ -9,6 +10,7 @@ const projectsData = {
   "justibot-ai": justibotAiData,
   "ngarumi-website": ngarumiData,
   "stock-management": stockManagementData,
+  "e-sims": esimsData,
 };
 
 // Helper function to get project by slug
