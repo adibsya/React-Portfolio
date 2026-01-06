@@ -33,12 +33,13 @@ const ProjectExample = () => {
         </div>
 
         {/* Projects grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="flex flex-wrap justify-center gap-8 lg:gap-10">
           {projects.map((project, index) => (
             <article
               key={project.id}
               onClick={() => handleProjectClick(project.slug)}
-              className="group relative overflow-hidden rounded-3xl
+              className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.67rem)] lg:max-w-[400px] lg:min-w-[300px]
+                         group relative overflow-hidden rounded-3xl
                          bg-gradient-to-b from-white/10 to-white/5
                          backdrop-blur-xl cursor-pointer
                          transition-all duration-700 ease-out
@@ -73,7 +74,7 @@ const ProjectExample = () => {
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/40 to-transparent
                                   transition-opacity duration-500 group-hover:opacity-80" />
-                  
+
                   {/* Hover glow effect on image */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/0 via-transparent to-purple-500/0
                                   opacity-0 group-hover:opacity-20 transition-opacity duration-700" />
@@ -85,7 +86,7 @@ const ProjectExample = () => {
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px
                                   bg-gradient-to-r from-transparent via-pink-500/50 to-transparent
                                   opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
+
                   <h3 className="text-xl font-bold text-white 
                                  group-hover:text-transparent group-hover:bg-clip-text 
                                  group-hover:bg-gradient-to-r group-hover:from-pink-400 group-hover:to-purple-400
