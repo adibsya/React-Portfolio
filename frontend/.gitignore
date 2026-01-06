@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Original PNG assets (backup kept locally, not in Git)
+src/assets/projects/
