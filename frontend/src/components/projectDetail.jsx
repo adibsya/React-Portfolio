@@ -218,9 +218,9 @@ const ProjectDetail = ({ projectId, onClose }) => {
                 </div>
 
                 {/* Screen Display Area */}
-                <div className="relative overflow-hidden rounded-lg bg-black aspect-video shadow-inner">
+                <div className="relative overflow-hidden rounded-lg bg-zinc-950 aspect-video shadow-inner">
                   {/* Main Image with slide animation */}
-                  <div className="relative w-full h-full">
+                  <div className="relative w-full h-full flex items-center justify-center">
                     <AnimatePresence initial={false} custom={direction} mode="wait">
                       {project.images ? (
                         <motion.img
@@ -236,7 +236,7 @@ const ProjectDetail = ({ projectId, onClose }) => {
                           }}
                           src={project.images[currentImageIndex]}
                           alt={`${project.title} - Image ${currentImageIndex + 1}`}
-                          className="w-full h-full object-cover absolute inset-0"
+                          className="max-w-full max-h-full object-contain"
                         />
                       ) : (
                         <motion.img
@@ -244,7 +244,7 @@ const ProjectDetail = ({ projectId, onClose }) => {
                           animate={{ opacity: 1 }}
                           src={project.image}
                           alt={project.title}
-                          className="w-full h-full object-cover absolute inset-0"
+                          className="max-w-full max-h-full object-contain"
                         />
                       )}
                     </AnimatePresence>
